@@ -15,6 +15,9 @@ function App() {
   // State to track which section is active for navbar highlighting
   const [activeSection, setActiveSection] = useState("header");
   
+  // Add state for mobile view
+  const [isMobile, setIsMobile] = useState(false);
+  
   // Create refs for each section
   const headerRef = useRef(null);
   const aboutRef = useRef(null);
@@ -22,6 +25,22 @@ function App() {
   const skillsRef = useRef(null);
   const projectsRef = useRef(null);
   const otherRef = useRef(null);
+
+  // Check window size on mount and when resized
+  useEffect(() => {
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check initially
+    checkIsMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkIsMobile);
+  }, []);
 
   // Setup intersection observer to detect which section is currently visible
   useEffect(() => {
@@ -45,7 +64,10 @@ function App() {
           }
         });
       },
-      { threshold: 0.4 }
+      { 
+        threshold: isMobile ? 0.2 : 0.4,
+        rootMargin: isMobile ? "-50px 0px" : "0px" 
+      }
     );
     
     sectionRefs.forEach(({ ref }) => {
@@ -61,31 +83,7 @@ function App() {
         }
       });
     };
-  }, []);
-
-  // Additional observer just for experience section with different threshold
-  useEffect(() => {
-    if (!experienceRef.current) return;
-    
-    const experienceObserver = new IntersectionObserver(
-      (entries) => {
-        entries.forEach(entry => {
-          if (entry.isIntersecting) {
-            setActiveSection("experience");
-          }
-        });
-      },
-      { threshold: 0.2 } // Lower threshold just for experience section
-    );
-    
-    experienceObserver.observe(experienceRef.current);
-    
-    return () => {
-      if (experienceRef.current) {
-        experienceObserver.unobserve(experienceRef.current);
-      }
-    };
-  }, []);
+  }, [isMobile]);
 
   // Scroll to section function
   const scrollToSection = (sectionId) => {
@@ -100,7 +98,7 @@ function App() {
 
     const ref = sectionMap[sectionId];
     if (ref && ref.current) {
-      const navbarHeight = 60;
+      const navbarHeight = isMobile ? 50 : 60; // Smaller offset on mobile
       const y = ref.current.getBoundingClientRect().top + window.pageYOffset - navbarHeight;
       
       window.scrollTo({
@@ -118,34 +116,58 @@ function App() {
       </div>
       
       {/* Fixed navigation */}
-      <Navbar onPageChange={scrollToSection} currentPage={activeSection} />
+      <Navbar onPageChange={scrollToSection} currentPage={activeSection} isMobile={isMobile} />
       
       {/* Scroll to top button */}
       <ScrollToTopButton />
       
       {/* All sections on a single page */}
-      <div className="relative z-10">
-        <section ref={headerRef} id="header" className="min-h-screen">
+      <div className="relative z-10 px-4 sm:px-6 md:px-8">
+        <section 
+          ref={headerRef} 
+          id="header" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <Profile />
         </section>
         
-        <section ref={aboutRef} id="about" className="min-h-screen">
+        <section 
+          ref={aboutRef} 
+          id="about" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <Aboutme />
         </section>
         
-        <section ref={experienceRef} id="experience" className="min-h-screen">
+        <section 
+          ref={experienceRef} 
+          id="experience" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <Experience />
         </section>
         
-        <section ref={skillsRef} id="skills" className="min-h-screen">
+        <section 
+          ref={skillsRef} 
+          id="skills" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <TechnicalSkills />
         </section>
         
-        <section ref={projectsRef} id="projects" className="min-h-screen">
+        <section 
+          ref={projectsRef} 
+          id="projects" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <RecentProjects />
         </section>
         
-        <section ref={otherRef} id="other" className="min-h-screen">
+        <section 
+          ref={otherRef} 
+          id="other" 
+          className="min-h-screen pt-16 md:pt-20"
+        >
           <OtherThanTechnology />
         </section>
         
