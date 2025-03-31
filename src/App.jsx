@@ -109,7 +109,7 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-900">
+    <main className="min-h-screen bg-gray-900 overflow-x-hidden">
       {/* Fixed matrix background for entire page */}
       <div className="fixed inset-0 z-0">
         <MatrixBackground />
@@ -122,7 +122,7 @@ function App() {
       <ScrollToTopButton />
       
       {/* All sections on a single page */}
-      <div className="relative z-10 px-4 sm:px-6 md:px-8">
+      <div className="relative z-10 px-2 sm:px-6 md:px-8">
         <section 
           ref={headerRef} 
           id="header" 
@@ -134,7 +134,7 @@ function App() {
         <section 
           ref={aboutRef} 
           id="about" 
-          className="min-h-screen pt-16 md:pt-20"
+          className="min-h-screen pt-12 md:pt-20"
         >
           <Aboutme />
         </section>
@@ -142,7 +142,7 @@ function App() {
         <section 
           ref={experienceRef} 
           id="experience" 
-          className="min-h-screen pt-16 md:pt-20"
+          className="min-h-screen pt-12 md:pt-20"
         >
           <Experience />
         </section>
@@ -150,7 +150,7 @@ function App() {
         <section 
           ref={skillsRef} 
           id="skills" 
-          className="min-h-screen pt-16 md:pt-20"
+          className="min-h-screen pt-12 md:pt-20"
         >
           <TechnicalSkills />
         </section>
@@ -158,7 +158,7 @@ function App() {
         <section 
           ref={projectsRef} 
           id="projects" 
-          className="min-h-screen pt-16 md:pt-20"
+          className="min-h-screen pt-12 md:pt-20"
         >
           <RecentProjects />
         </section>
@@ -166,7 +166,7 @@ function App() {
         <section 
           ref={otherRef} 
           id="other" 
-          className="min-h-screen pt-16 md:pt-20"
+          className="min-h-screen pt-12 md:pt-20"
         >
           <OtherThanTechnology />
         </section>

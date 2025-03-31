@@ -92,32 +92,32 @@ const Headerfile = () => {
               </h1>
             </div>
 
-            <div className="flex flex-wrap gap-3 sm:gap-4">
+            <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
               {skills.map((skill, index) => (
                 <div
                   key={index}
                   style={{ transitionDelay: `${skill.delay}ms` }}
-                  className={`flex items-center gap-2 px-4 sm:px-6 py-2 sm:py-3 rounded-full bg-gray-800/80 border border-gray-700 transition-all duration-500 ease-in-out hover:scale-110 hover:border-cyan-900 hover:shadow-lg hover:shadow-cyan-500/20 ${
+                  className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-1.5 sm:py-3 rounded-full bg-gray-800/80 border border-gray-700 transition-all duration-500 ease-in-out hover:scale-110 hover:border-cyan-900 hover:shadow-lg hover:shadow-cyan-500/20 ${
                     isVisible
                       ? "transform-none opacity-100"
                       : "-translate-x-full opacity-0"
                   }`}
                 >
                   {skill.icon}
-                  <span className="font-medium text-sm sm:text-base text-white text-opacity-90">
+                  <span className="font-medium text-xs sm:text-sm md:text-base text-white text-opacity-90">
                     {skill.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            <p className="max-w-2xl text-base sm:text-lg text-white text-opacity-80 leading-relaxed p-4 sm:p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 shadow-lg shadow-black/10">
+            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white text-opacity-80 leading-relaxed p-4 sm:p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 shadow-lg shadow-black/10">
               Architecting digital masterpieces that solve complex problems with elegant simplicity. Where vision meets execution, possibilities become reality.
             </p>
 
             {/* Mobile Profile Image - Only visible on mobile */}
-            <div className="flex justify-center lg:hidden mb-2">
-              <div className="relative w-48 sm:w-56 md:w-64 h-48 sm:h-56 md:h-64 rounded-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 shadow-xl shadow-cyan-500/30">
+            <div className="flex justify-center lg:hidden mb-4 sm:mb-6">
+              <div className="relative w-40 sm:w-56 md:w-64 h-40 sm:h-56 md:h-64 rounded-2xl overflow-hidden transition-all duration-500 ease-in-out hover:scale-105 shadow-xl shadow-cyan-500/30">
                 <div className="absolute inset-0 rounded-2xl border border-white/30 z-10"></div>
                 <img
                   src={profileImage}
