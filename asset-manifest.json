@@ -1,14 +1,14 @@
 {
   "files": {
-    "main.css": "/savindurajapaksha.github.io/static/css/main.f46dfef2.css",
-    "main.js": "/savindurajapaksha.github.io/static/js/main.54148998.js",
+    "main.css": "/savindurajapaksha.github.io/static/css/main.65f5309d.css",
+    "main.js": "/savindurajapaksha.github.io/static/js/main.c962b655.js",
     "static/media/image.png": "/savindurajapaksha.github.io/static/media/image.761d4c2e6efc8d7d6bc9.png",
     "index.html": "/savindurajapaksha.github.io/index.html",
-    "main.f46dfef2.css.map": "/savindurajapaksha.github.io/static/css/main.f46dfef2.css.map",
-    "main.54148998.js.map": "/savindurajapaksha.github.io/static/js/main.54148998.js.map"
+    "main.65f5309d.css.map": "/savindurajapaksha.github.io/static/css/main.65f5309d.css.map",
+    "main.c962b655.js.map": "/savindurajapaksha.github.io/static/js/main.c962b655.js.map"
   },
   "entrypoints": [
-    "static/css/main.f46dfef2.css",
-    "static/js/main.54148998.js"
+    "static/css/main.65f5309d.css",
+    "static/js/main.c962b655.js"
   ]
 }
