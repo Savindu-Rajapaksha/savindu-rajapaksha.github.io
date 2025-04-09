@@ -32,9 +32,9 @@ const Headerfile = () => {
   }, []);
 
   const skills = [
-    { icon: <Code className="w-5 h-5" />, text: "Full Stack", delay: 100 },
-    { icon: <Terminal className="w-5 h-5" />, text: "DevOps", delay: 200 },
-    { icon: <Palette className="w-5 h-5" />, text: "UI/UX", delay: 300 },
+    { icon: <Code className="w-5 h-5" />, text: "Front-End", delay: 100 },
+    { icon: <Terminal className="w-5 h-5" />, text: "Back-end", delay: 200 },
+    { icon: <Palette className="w-5 h-5" />, text: "Full Stack", delay: 300 },
   ];
 
   const socialLinks = [
