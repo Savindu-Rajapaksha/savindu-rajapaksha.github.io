@@ -17,6 +17,7 @@ import ComponentWrapper from '../components/ComponentWrapper';
 const TechnicalSkills = () => {
   const [activeTab, setActiveTab] = useState('technologies'); // Default active tab
   const autoSwitchTimerRef = useRef(null);
+  const containerRef = useRef(null);
 
   // Function to start/restart auto-switching timer
   const startAutoSwitchTimer = () => {
@@ -45,12 +46,36 @@ const TechnicalSkills = () => {
     startAutoSwitchTimer(); // Reset the timer when a tab is manually clicked
   };
 
-  // Auto-switching tabs effect - initial setup
+  // Auto-switching tabs effect with intersection observer
   useEffect(() => {
-    startAutoSwitchTimer();
+    // Create an observer to detect when the component is visible
+    const observer = new IntersectionObserver(
+      (entries) => {
+        const [entry] = entries;
+        
+        // If component is visible, start auto-switching
+        if (entry.isIntersecting) {
+          startAutoSwitchTimer();
+        } else {
+          // If component is not visible, clear the timer
+          if (autoSwitchTimerRef.current) {
+            clearInterval(autoSwitchTimerRef.current);
+          }
+        }
+      },
+      { threshold: 0.3 } // Component is considered "visible" when 30% of it is in view
+    );
     
-    // Clean up interval on unmount
+    // Start observing the container
+    if (containerRef.current) {
+      observer.observe(containerRef.current);
+    }
+    
+    // Clean up on unmount
     return () => {
+      if (containerRef.current) {
+        observer.unobserve(containerRef.current);
+      }
       if (autoSwitchTimerRef.current) {
         clearInterval(autoSwitchTimerRef.current);
       }
@@ -232,8 +257,8 @@ const TechnicalSkills = () => {
 
   return (
     <ComponentWrapper>
-      {/* Added margin-top: 6rem (mt-24) to create space between sections */}
-      <div className="mt-24">
+      {/* Added reference to the container */}
+      <div ref={containerRef} className="mt-24">
         {/* Technical Skills Header */}
         <div className="mb-12 text-center">
           <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
@@ -242,7 +267,7 @@ const TechnicalSkills = () => {
           <div className="h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto mt-4 rounded-full"></div>
         </div>
 
-        {/* Tabs Navigation with progress indicator */}
+        {/* Tabs Navigation with auto-switch indicator */}
         <div className="flex justify-center mb-16">
           <div className="bg-gray-800/60 backdrop-blur-md rounded-full p-1.5 flex flex-wrap justify-center relative">
             {tabs.map((tab) => {
@@ -271,7 +296,7 @@ const TechnicalSkills = () => {
             {/* Small indicator that this auto-switches */}
             <div className="absolute -bottom-6 left-0 right-0 flex justify-center">
               <div className="bg-gray-800/60 backdrop-blur-sm px-3 py-1 rounded-full text-xs text-gray-400">
-                Auto-switching enabled
+                Auto-switching when in view
               </div>
             </div>
           </div>

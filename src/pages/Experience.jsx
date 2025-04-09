@@ -33,6 +33,16 @@ function Experience() {
 
   return (
     <ComponentWrapper>
+      {/* Mobile-only Experience heading */}
+      {isMobile && (
+        <div className="mb-10 text-center">
+          <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
+            My Experience
+          </h2>
+          <div className="h-1 w-24 bg-gradient-to-r from-cyan-500 to-blue-500 mx-auto rounded-full"></div>
+        </div>
+      )}
+      
       <div className="flex flex-col lg:flex-row lg:space-x-6 pt-0 px-4 sm:px-6">
         {/* Left sidebar - Skills Overview */}
         <div className="w-full lg:w-64 flex-shrink-0 lg:mr-8 mb-8 lg:mb-0">

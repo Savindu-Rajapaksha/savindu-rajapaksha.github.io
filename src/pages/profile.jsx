@@ -26,9 +26,24 @@ const Star = () => (
 const Headerfile = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredSocial, setHoveredSocial] = useState("");
+  const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
     setIsVisible(true);
+    
+    // Check if mobile
+    const checkIsMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    // Check initially
+    checkIsMobile();
+    
+    // Add event listener
+    window.addEventListener('resize', checkIsMobile);
+    
+    // Clean up
+    return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
 
   const skills = [
@@ -61,12 +76,13 @@ const Headerfile = () => {
   ];
 
   return (
-    <div className="relative min-h-screen overflow-hidden bg-transparent pt-16 sm:pt-20">
-      <div className="absolute inset-0 flex flex-col items-center justify-start pt-10 sm:pt-16 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-16 z-10">
+    <div className="relative overflow-hidden bg-transparent pt-1">
+      {/* Changed from absolute to relative positioning */}
+      <div className="relative flex flex-col items-center justify-start pt-10 sm:pt-16 md:pt-20 p-4 sm:p-6 md:p-8 lg:p-16 z-10">
         <div className="w-full max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
           {/* Left Column - Content */}
           <div
-            className={`flex flex-col gap-6 md:gap-8 transition-all duration-1000 ease-in-out mt-16 sm:mt-10 md:mt-0 ${
+            className={`flex flex-col gap-6 md:gap-8 transition-all duration-1000 ease-in-out mt-12 ${
               isVisible
                 ? "transform-none opacity-100"
                 : "translate-x-full opacity-0"
@@ -206,9 +222,15 @@ const Headerfile = () => {
         </div>
       </div>
 
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 z-10">
-        <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-white text-opacity-50 animate-bounce" />
-      </div>
+      {/* Reduced space at the bottom for mobile */}
+      {isMobile && <div className="h-4"></div>}
+
+      {/* Only show chevron on desktop */}
+      {!isMobile && (
+        <div className="relative bottom-8 left-1/2 -translate-x-1/2 z-10 flex justify-center mt-8">
+          <ChevronDown className="w-6 h-6 sm:w-8 sm:h-8 text-white text-opacity-50 animate-bounce" />
+        </div>
+      )}
     </div>
   );
 };
