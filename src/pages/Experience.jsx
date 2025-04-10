@@ -293,7 +293,7 @@ function Experience() {
             <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6 relative">
               {/* Left side - Year - simplified for mobile */}
               <div className={`flex items-center sm:block ${isMobile ? 'mb-4' : 'w-28 flex-shrink-0'} relative`}>
-                <span className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mr-2 sm:mr-0">2013</span>
+                <span className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mr-2 sm:mr-0">2024</span>
                 <p className="text-gray-400 text-xs sm:text-sm">Certification</p>
                 <div className={`${isMobile ? 'hidden' : 'mt-2 absolute left-[80px] top-[10px]'}`}>
                   <div className="h-6 w-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 relative z-10 border-4 border-gray-800 shadow-lg shadow-blue-500/20"></div>
