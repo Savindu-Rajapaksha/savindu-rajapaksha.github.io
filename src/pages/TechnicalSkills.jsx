@@ -223,31 +223,31 @@ const TechnicalSkills = () => {
   // Render content based on active tab
   const renderTabContent = () => {
     return (
-      <div className="relative min-h-[40vh]">
+      <div className="relative">
         {/* Technologies content */}
         <div className={`transition-all transform ${getTabAnimationClass('technologies')}`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-8 w-full">
             {technologies.map((tech, index) => renderTechCard(tech, index))}
           </div>
         </div>
 
         {/* Frameworks content */}
         <div className={`transition-all transform ${getTabAnimationClass('frameworks')}`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-4 xl:grid-cols-4 2xl:grid-cols-4 gap-8 w-full">
             {frameworks.map((fw, index) => renderTechCard(fw, index))}
           </div>
         </div>
 
         {/* Databases content */}
         <div className={`transition-all transform ${getTabAnimationClass('databases')}`}>
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-8 w-full max-w-4xl mx-auto">
             {databases.map((db, index) => renderTechCard(db, index))}
           </div>
         </div>
 
         {/* Tools content */}
         <div className={`transition-all transform ${getTabAnimationClass('tools')}`}>
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-8">
+          <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-6 gap-8 w-full">
             {tools.map((tool, index) => renderTechCard(tool, index))}
           </div>
         </div>
@@ -258,9 +258,9 @@ const TechnicalSkills = () => {
   return (
     <ComponentWrapper>
       {/* Added reference to the container */}
-      <div ref={containerRef} className="mt-24">
+      <div ref={containerRef} className="w-full mt-0">
         {/* Technical Skills Header */}
-        <div className="mb-12 text-center">
+        <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
             Technical Skills
           </h2>
@@ -268,7 +268,7 @@ const TechnicalSkills = () => {
         </div>
 
         {/* Tabs Navigation with auto-switch indicator */}
-        <div className="flex justify-center mb-16">
+        <div className="flex justify-center mb-10">
           <div className="bg-gray-800/60 backdrop-blur-md rounded-full p-1.5 flex flex-wrap justify-center relative">
             {tabs.map((tab) => {
               const isActive = activeTab === tab.id;
@@ -303,7 +303,7 @@ const TechnicalSkills = () => {
         </div>
 
         {/* Section Header */}
-        <div className="mb-10">
+        <div className="mb-10 w-full">
           <div className="flex items-center mb-8">
             {tabs.find(tab => tab.id === activeTab)?.icon && (
               <div className="h-6 w-6 text-blue-500 mr-3">
@@ -314,11 +314,13 @@ const TechnicalSkills = () => {
               {tabs.find(tab => tab.id === activeTab)?.label || 'Skills'}
             </h3>
           </div>
-          <div className="h-px w-full bg-gray-800 mb-10"></div>
+          <div className="h-px w-full bg-gray-800 mb-8"></div>
         </div>
 
         {/* Dynamic Content Based on Active Tab */}
-        {renderTabContent()}
+        <div className="w-full px-0 md:px-4 lg:px-8 xl:px-16">
+          {renderTabContent()}
+        </div>
       </div>
     </ComponentWrapper>
   );

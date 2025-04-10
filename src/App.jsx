@@ -114,7 +114,7 @@ function App() {
   };
 
   return (
-    <main className="min-h-screen bg-gray-900 overflow-x-hidden">
+    <main className="bg-gray-900 overflow-x-hidden">
       {/* Fixed matrix background for entire page */}
       <div className="fixed inset-0 z-0">
         <MatrixBackground />
@@ -130,53 +130,29 @@ function App() {
       {/* Scroll to top button */}
       <ScrollToTopButton />
 
-      {/* All sections on a single page */}
-      <div className="relative z-10 px-2 sm:px-6 md:px-8">
-        <section
-          ref={headerRef}
-          id="header"
-          className="min-h-screen pt-0 md:pt-0"
-        >
+      {/* All sections on a single page - with improved spacing */}
+      <div className="relative z-10 px-4 sm:px-6 lg:px-8 xl:px-0 mx-auto w-full xl:max-w-7xl 2xl:max-w-screen-2xl">
+        <section ref={headerRef} id="header" className="pt-0 md:pt-0">
           <Profile />
         </section>
 
-        <section
-          ref={aboutRef}
-          id="about"
-          className="min-h-screen pt-12 md:pt-20"
-        >
+        <section ref={aboutRef} id="about" className="mb-16">
           <Aboutme />
         </section>
 
-        <section
-          ref={experienceRef}
-          id="experience"
-          className="min-h-screen pt-0 md:pt-20"
-        >
+        <section ref={experienceRef} id="experience" className="mb-16">
           <Experience />
         </section>
 
-        <section
-          ref={skillsRef}
-          id="skills"
-          className="min-h-screen pt-0 md:pt-20"
-        >
+        <section ref={skillsRef} id="skills" className="mb-16">
           <TechnicalSkills />
         </section>
 
-        <section
-          ref={projectsRef}
-          id="projects"
-          className="min-h-screen pt-0 md:pt-20"
-        >
+        <section ref={projectsRef} id="projects" className="mb-16">
           <RecentProjects />
         </section>
 
-        <section
-          ref={otherRef}
-          id="other"
-          className="min-h-screen pt-0 md:pt-20"
-        >
+        <section ref={otherRef} id="other" className="mb-16">
           <OtherThanTechnology />
         </section>
 

@@ -12,7 +12,7 @@ function Aboutme() {
 
   // Custom component for syntax highlighting JSON with responsive design
   const ColorfulJSON = () => (
-    <pre className="bg-black p-2 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm font-mono transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10">
+    <pre className="bg-black p-2 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm font-mono transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 w-full">
       <span className="text-gray-400">{'{'}</span>
       <br />
       <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Name with Initials</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">R. W. Savindu Hansaka Rajapaksah</span><span className="text-gray-400">",</span>
@@ -39,10 +39,10 @@ function Aboutme() {
 
   return (
     <ComponentWrapper>
-      <div className="w-full max-w-4xl mx-auto px-3 sm:px-6 relative z-10">
+      <div className="w-full mx-auto px-3 sm:px-6 relative z-10">
         {/* About Section */}
-        <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-xl border border-gray-800 hover:border-cyan-900 hover:shadow-cyan-500/10 transition-all duration-300 mb-6">
-          <div className="prose prose-invert max-w-none">
+        <div className="bg-gray-900/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-4 sm:p-8 shadow-xl border border-gray-800 hover:border-cyan-900 hover:shadow-cyan-500/10 transition-all duration-300 mb-6 w-full max-w-4xl mx-auto">
+          <div className="prose prose-invert max-w-none w-full">
             <h1 className="text-2xl sm:text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent inline-block mb-4 sm:mb-6">
               About Me
             </h1>
@@ -54,7 +54,7 @@ function Aboutme() {
         </div>
         
         {/* JSON Data Section */}
-        <div className="mt-6 sm:mt-8 bg-gray-900/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl border border-gray-800 hover:border-cyan-900 hover:shadow-cyan-500/10 transition-all duration-300">
+        <div className="mt-6 sm:mt-8 bg-gray-900/40 backdrop-blur-sm rounded-xl sm:rounded-2xl p-3 sm:p-6 shadow-xl border border-gray-800 hover:border-cyan-900 hover:shadow-cyan-500/10 transition-all duration-300 w-full max-w-4xl mx-auto">
           <h2 className="text-lg sm:text-xl font-bold mb-3 sm:mb-4 bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">Basic Information</h2>
           <ColorfulJSON />
         </div>

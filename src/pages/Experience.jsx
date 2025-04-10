@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Briefcase, Calendar, Code, Package, Award, ExternalLink, GraduationCap, School, Clock, Trophy, MapPin } from 'lucide-react';
-import ComponentWrapper from '../components/ComponentWrapper';
+// Direct implementation without ComponentWrapper to avoid potential conflicts
+// import ComponentWrapper from '../components/ComponentWrapper';
 
 function Experience() {
   // State to track if we're on mobile
@@ -32,7 +33,8 @@ function Experience() {
   };
 
   return (
-    <ComponentWrapper>
+    // Direct implementation of wrapper to avoid potential conflicts with ComponentWrapper
+    <div className="relative w-full bg-transparent text-white">
       {/* Mobile-only Experience heading */}
       {isMobile && (
         <div className="mb-10 text-center">
@@ -44,9 +46,9 @@ function Experience() {
       )}
       
       <div className="flex flex-col lg:flex-row lg:space-x-6 pt-0 px-4 sm:px-6">
-        {/* Left sidebar - Skills Overview */}
+        {/* Left sidebar - Skills Overview - NO STICKY POSITIONING */}
         <div className="w-full lg:w-64 flex-shrink-0 lg:mr-8 mb-8 lg:mb-0">
-          <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-5 lg:sticky lg:top-24 border border-gray-700">
+          <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-5 border border-gray-700">
             <div className="mb-4">
               <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-3">
                 Quick Navigation
@@ -238,11 +240,11 @@ function Experience() {
             {/* The vertical line for Academic Qualifications - hidden on small screens */}
             <div className="absolute left-6 sm:left-[120px] top-0 bottom-0 w-1 bg-blue-500 rounded-full h-full hidden sm:block"></div>
             
-            {/* 2019 BSc */}
+            {/* 2023 BSc */}
             <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6 relative">
               {/* Left side - Year - simplified for mobile */}
               <div className={`flex items-center sm:block ${isMobile ? 'mb-4' : 'w-28 flex-shrink-0'} relative`}>
-                <span className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mr-2 sm:mr-0">2019</span>
+                <span className="text-2xl sm:text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-500 to-blue-500 mr-2 sm:mr-0">2023</span>
                 <p className="text-gray-400 text-xs sm:text-sm">Undergraduate</p>
                 <div className={`${isMobile ? 'hidden' : 'mt-2 absolute left-[80px] top-[10px]'}`}>
                   <div className="h-6 w-6 rounded-full bg-gradient-to-r from-cyan-500 to-blue-500 relative z-10 border-4 border-gray-800 shadow-lg shadow-blue-500/20"></div>
@@ -289,7 +291,7 @@ function Experience() {
               </div>
             </div>
 
-            {/* 2013 Certification */}
+            {/* 2024 Certification */}
             <div className="flex flex-col md:flex-row md:items-start gap-4 sm:gap-6 relative">
               {/* Left side - Year - simplified for mobile */}
               <div className={`flex items-center sm:block ${isMobile ? 'mb-4' : 'w-28 flex-shrink-0'} relative`}>
@@ -345,7 +347,7 @@ function Experience() {
           </div>
         </div>
       </div>
-    </ComponentWrapper>
+    </div>
   );
 }
 

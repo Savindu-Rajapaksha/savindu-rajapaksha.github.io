@@ -1,1 +1,118 @@
-/* write your css here */
+/* Add your existing App.css content here */
+
+/* Responsive classes for larger screens */
+@media (min-width: 1536px) {
+    /* 2XL screens */
+    .container-2xl {
+      max-width: 1536px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Adjust grid layouts to use more columns on large screens */
+    .grid-cols-xl-4 {
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+    }
+    
+    /* Adjust section padding for larger screens */
+    .section-padding-2xl {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+  
+  @media (min-width: 1920px) {
+    /* Even larger screens */
+    .container-3xl {
+      max-width: 1800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    /* Add additional spacing between sections */
+    .section-spacing-3xl {
+      margin-bottom: 6rem;
+    }
+  }
+  
+  /* Adjust content width in the experience section */
+  @media (min-width: 1280px) {
+    .experience-content {
+      width: 75%;
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+  
+  /* Ensure the timeline in experience section scales well */
+  @media (min-width: 1536px) {
+    .timeline-content {
+      padding-left: 10%;
+    }
+  }
+  
+  /* Additional responsive utilities */
+  .w-screen-90 {
+    width: 90vw;
+  }
+  
+  .w-screen-80 {
+    width: 80vw;
+  }
+  
+  .w-screen-70 {
+    width: 70vw;
+  }
+  
+  .max-w-screen-90 {
+    max-width: 90vw;
+  }
+  
+  .max-w-screen-80 {
+    max-width: 80vw;
+  }
+  
+  .max-w-screen-70 {
+    max-width: 70vw;
+  }
+  
+  /* Add responsive padding that scales with screen size */
+  .px-responsive {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  @media (min-width: 640px) {
+    .px-responsive {
+      padding-left: 2rem;
+      padding-right: 2rem;
+    }
+  }
+  
+  @media (min-width: 768px) {
+    .px-responsive {
+      padding-left: 3rem;
+      padding-right: 3rem;
+    }
+  }
+  
+  @media (min-width: 1024px) {
+    .px-responsive {
+      padding-left: 5%;
+      padding-right: 5%;
+    }
+  }
+  
+  @media (min-width: 1536px) {
+    .px-responsive {
+      padding-left: 10%;
+      padding-right: 10%;
+    }
+  }
+  
+  @media (min-width: 1920px) {
+    .px-responsive {
+      padding-left: 15%;
+      padding-right: 15%;
+    }
+  }

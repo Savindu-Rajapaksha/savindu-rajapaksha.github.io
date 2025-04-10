@@ -14,11 +14,11 @@ const OtherThanTechnology = () => {
   return (
     <ComponentWrapper>
       <div 
-        className="relative z-10 pt-16"
+        className="relative z-10 w-full pt-0"
         onMouseMove={handleMouseMove}
       >      
         {/* Section Header */}
-        <div className="mb-20 text-center">
+        <div className="mb-10 text-center">
           <h2 className="text-4xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-3 hover:scale-105 transition-transform duration-300">
             Other than the technology
           </h2>
@@ -26,15 +26,15 @@ const OtherThanTechnology = () => {
         </div>
 
         {/* Soft Skills Section */}
-        <div className="mb-24">
-          <div className="flex items-center mb-12">
+        <div className="mb-12 w-full px-4 lg:px-0">
+          <div className="flex items-center mb-8">
             <div className="w-12 h-12 rounded-xl bg-blue-500/10 flex items-center justify-center mr-4 hover:rotate-12 transition-transform duration-300">
               <Award className="h-6 w-6 text-blue-400" />
             </div>
             <h3 className="text-2xl font-bold text-white hover:text-blue-400 transition-colors duration-300">Soft Skills</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 w-full">
             {/* Teamwork Skill */}
             <div className="group perspective">
               <div className="bg-gray-800/40 backdrop-blur-md rounded-2xl p-8 border border-gray-700 hover:border-cyan-500 transition-all duration-500 shadow-lg hover:shadow-cyan-500/10 h-full hover:-translate-y-2 transform-gpu hover:rotate-1">
@@ -170,15 +170,15 @@ const OtherThanTechnology = () => {
         </div>
 
         {/* Interests Section */}
-        <div>
-          <div className="flex items-center mb-12">
+        <div className="w-full px-4 lg:px-0">
+          <div className="flex items-center mb-8">
             <div className="w-12 h-12 rounded-xl bg-pink-500/10 flex items-center justify-center mr-4 hover:rotate-12 transition-transform duration-300">
               <Heart className="h-6 w-6 text-pink-400" />
             </div>
             <h3 className="text-2xl font-bold text-white hover:text-pink-400 transition-colors duration-300">Interests</h3>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
             {/* Technology Interest */}
             <div className="group">
               <div className="bg-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-gray-700 hover:border-indigo-500 transition-all duration-300 shadow-lg h-full hover:-translate-y-2 transform-gpu hover:rotate-1">
