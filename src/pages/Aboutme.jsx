@@ -21,7 +21,7 @@ function Aboutme() {
       <br />
       <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Mobile</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">(+94) 702430521</span><span className="text-gray-400">",</span>
       <br />
-      <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Email</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">savinduhansaka362@gmail.com</span><span className="text-gray-400">",</span>
+      <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Email</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">savindu.h.rajapaksha@gmail.com</span><span className="text-gray-400">",</span>
       <br />
       <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Tech-Skills</span><span className="text-gray-400">"</span><span className="text-gray-400">: [</span>
       <br />
