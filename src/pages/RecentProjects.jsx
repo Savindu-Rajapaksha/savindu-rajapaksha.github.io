@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { Monitor, Smartphone, Globe, Briefcase } from 'lucide-react';
 import ComponentWrapper from '../components/ComponentWrapper';
+import image from '../images/6e81f610234 (1).png';
 
 const RecentProjects = () => {
   const [activeTab, setActiveTab] = useState('web'); // 'web' or 'standalone'
@@ -199,7 +200,7 @@ const RecentProjects = () => {
         <div className="flex justify-center mb-20 relative">
           <div className="relative z-10 transform hover:rotate-1 transition-transform duration-500 max-w-lg">
             <img 
-              src="https://placehold.co/600x400/png?text=Mobile+App+Showcase" 
+              src={image}
               alt="Project Showcase"
               className="relative z-10 rounded-3xl shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
             />
