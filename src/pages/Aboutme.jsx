@@ -15,7 +15,7 @@ function Aboutme() {
     <pre className="bg-black p-2 sm:p-4 rounded-lg overflow-x-auto text-xs sm:text-sm font-mono transition-all duration-300 hover:shadow-lg hover:shadow-cyan-500/10 w-full">
       <span className="text-gray-400">{'{'}</span>
       <br />
-      <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Name with Initials</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">R. W. Savindu Hansaka Rajapaksah</span><span className="text-gray-400">",</span>
+      <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Name with Initials</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">R. W. Savindu Hansaka Rajapaksaha</span><span className="text-gray-400">",</span>
       <br />
       <span className="text-gray-400 ml-1 sm:ml-4">"</span><span className="text-yellow-300">Born on</span><span className="text-gray-400">"</span><span className="text-gray-400">: </span><span className="text-gray-400">"</span><span className="text-green-400">20th January 2003</span><span className="text-gray-400">",</span>
       <br />
