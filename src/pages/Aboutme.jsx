@@ -83,7 +83,7 @@ function Aboutme() {
             </h1>
 
             <p className="text-sm sm:text-base text-gray-300 mb-4">
-              Motivated 2 nd year undergraduate student pursuing a degree in Software Engineering with foundational skills in programming, web development, and problem-solving. Proficient in Java, Python, and front-end technologies such as HTML and CSS. Eager to expand knowledge through hands-on projects and collaborative learning in a dynamic academic or internship environment.
+              Motivated 2nd year undergraduate student pursuing a degree in Software Engineering with foundational skills in programming, web development, and problem-solving. Proficient in Java, Python, and front-end technologies such as HTML and CSS. Eager to expand knowledge through hands-on projects and collaborative learning in a dynamic academic or internship environment.
             </p>
           </div>
         </div>
