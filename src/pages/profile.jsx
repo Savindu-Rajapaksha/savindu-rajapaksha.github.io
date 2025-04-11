@@ -11,6 +11,7 @@ import {
   ChevronDown
 } from "lucide-react";
 import profileImage from "../images/image.png";
+import resumePdf from "../images/Savindu_Rajapaksha.pdf"; // Import the PDF file
 
 // Star icon component
 const Star = () => (
@@ -66,7 +67,7 @@ const Headerfile = () => {
     {
       icon: <Mail className="w-5 h-5 text-white" />,
       label: "Email",
-      href: "mailto:savinduhansaka362@gmail.com",
+      href: "mailto:savindu.h.rajapaksha@gmail.com",
     },
     {
       icon: <Phone className="w-5 h-5 text-white" />,
@@ -145,7 +146,7 @@ const Headerfile = () => {
 
             <div className="flex flex-col sm:flex-row items-center gap-4 sm:gap-6">
               <a 
-                href="/resume.pdf" 
+                href={resumePdf} 
                 download="Savindu_Rajapaksha_Resume.pdf"
                 className="w-full sm:w-auto relative overflow-hidden px-6 sm:px-8 py-3 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-400 bg-[length:200%_auto] font-semibold tracking-wide text-white shadow-lg shadow-cyan-500/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/60 transition-all duration-500 ease-in-out text-center"
               >

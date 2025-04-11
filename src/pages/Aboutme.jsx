@@ -53,16 +53,16 @@ function Aboutme() {
       <span className="text-gray-400">: [</span>
       <br />
       <span className="text-gray-400 ml-2 sm:ml-8">"</span>
-      <span className="text-blue-400">Web Application Development</span>
+      <span className="text-blue-400">Java, Spring Boot Development</span>
       <span className="text-gray-400">",</span>
       <br />
       <span className="text-gray-400 ml-2 sm:ml-8">"</span>
-      <span className="text-blue-400">UI/UX Design & Development</span>
+      <span className="text-blue-400">Database Management (MySQL, MongoDB)</span>
       <span className="text-gray-400">",</span>
       <br />
       <span className="text-gray-400 ml-2 sm:ml-8">"</span>
       <span className="text-blue-400">
-        Cross-Platform Mobile Application Development
+        Version Control & Collaboration (Git)
       </span>
       <span className="text-gray-400">"</span>
       <br />
