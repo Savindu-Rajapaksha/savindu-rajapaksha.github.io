@@ -1,15 +1,16 @@
 {
   "files": {
     "main.css": "/static/css/main.a9cdd5e5.css",
-    "main.js": "/static/js/main.7b381e54.js",
+    "main.js": "/static/js/main.c606b2bc.js",
     "static/media/6e81f610234 (1).png": "/static/media/6e81f610234 (1).55f6fda8e8e3ce9a2927.png",
     "static/media/image.png": "/static/media/image.761d4c2e6efc8d7d6bc9.png",
+    "static/media/Savindu_Rajapaksha.pdf": "/static/media/Savindu_Rajapaksha.1c57969039571f2a7a1b.pdf",
     "index.html": "/index.html",
     "main.a9cdd5e5.css.map": "/static/css/main.a9cdd5e5.css.map",
-    "main.7b381e54.js.map": "/static/js/main.7b381e54.js.map"
+    "main.c606b2bc.js.map": "/static/js/main.c606b2bc.js.map"
   },
   "entrypoints": [
     "static/css/main.a9cdd5e5.css",
-    "static/js/main.7b381e54.js"
+    "static/js/main.c606b2bc.js"
   ]
 }
