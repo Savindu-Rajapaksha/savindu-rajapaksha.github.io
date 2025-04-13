@@ -155,10 +155,10 @@ function App() {
         <section ref={otherRef} id="other" className="mb-16">
           <OtherThanTechnology />
         </section>
-
-        {/* Footer */}
-        <Footer />
       </div>
+
+      {/* Full-width footer that extends edge to edge */}
+      <Footer />
     </main>
   );
 }

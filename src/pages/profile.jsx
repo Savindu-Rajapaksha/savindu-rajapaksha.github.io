@@ -13,12 +13,12 @@ import {
 import profileImage from "../images/image.png";
 import resumePdf from "../images/Savindu_Rajapaksha.pdf"; // Import the PDF file
 
-// Star icon component
+// Star icon component - Updated to use cyan color consistently
 const Star = () => (
   <svg
     viewBox="0 0 24 24"
     fill="currentColor"
-    className="w-6 h-6 text-cyan-400"
+    className="w-6 h-6 text-cyan-500" // Changed from text-cyan-400 to text-cyan-500 for more consistent blue
   >
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
   </svg>
@@ -121,14 +121,14 @@ const Headerfile = () => {
                   }`}
                 >
                   {skill.icon}
-                  <span className="font-medium text-xs sm:text-sm md:text-base text-white text-opacity-90">
+                  <span className="font-medium text-xs sm:text-sm md:text-base text-white">
                     {skill.text}
                   </span>
                 </div>
               ))}
             </div>
 
-            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white text-opacity-80 leading-relaxed p-4 sm:p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 shadow-lg shadow-black/10">
+            <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white leading-relaxed p-4 sm:p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 shadow-lg shadow-black/10">
               Architecting digital masterpieces that solve complex problems with elegant simplicity. Where vision meets execution, possibilities become reality.
             </p>
 
@@ -183,13 +183,13 @@ const Headerfile = () => {
             {/* Intern Status Badge - Below social media icons on mobile */}
             <div className="lg:hidden w-full p-4 sm:p-5 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 transform scale-100 transition-all duration-400 ease-in-out hover:-translate-y-2 hover:scale-105 hover:border-cyan-900 hover:shadow-lg hover:shadow-cyan-500/50">
               <div className="text-white text-center">
-                <p className="text-xs sm:text-sm font-medium text-white text-opacity-70">
+                <p className="text-xs sm:text-sm font-medium text-white">
                   SEEKING
                 </p>
                 <p className="text-xl sm:text-2xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                   Intern
                 </p>
-                <p className="text-xs sm:text-sm text-white text-opacity-70">of Software Engineer</p>
+                <p className="text-xs sm:text-sm text-white">of Software Engineer</p>
               </div>
             </div>
           </div>
@@ -209,13 +209,13 @@ const Headerfile = () => {
               </div>
               <div className="absolute -bottom-10 -right-10 p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 transform scale-100 transition-all duration-400 ease-in-out hover:-translate-y-2 hover:scale-105 hover:border-cyan-900 hover:shadow-lg hover:shadow-cyan-500/50">
                 <div className="text-white">
-                  <p className="text-sm font-medium text-white text-opacity-70">
+                  <p className="text-sm font-medium text-white">
                     SEEKING
                   </p>
                   <p className="text-3xl font-bold bg-gradient-to-r from-cyan-400 to-blue-500 bg-clip-text text-transparent">
                     Intern
                   </p>
-                  <p className="text-white text-opacity-70"> of Software Engineer</p>
+                  <p className="text-white"> of Software Engineer</p>
                 </div>
               </div>
             </div>

@@ -1,12 +1,19 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Monitor, Smartphone, Globe, Briefcase } from 'lucide-react';
+import { Monitor, Smartphone, Globe, Briefcase, Ticket, ShoppingCart, PlaneTakeoff } from 'lucide-react';
 import ComponentWrapper from '../components/ComponentWrapper';
-import image from '../images/6e81f610234 (1).png';
+import ImageSlider from '../components/ImageSlider'; // Import the new component
+import projectimg1 from '../images/projectimg1.png'; // Web project image
+import projectimg2 from '../images/projectimg2.png'; // Standalone project image
+import projectimg3 from '../images/projectimg3.png'; // Standalone project image
 
 const RecentProjects = () => {
   const [activeTab, setActiveTab] = useState('web'); // 'web' or 'standalone'
   const autoSwitchTimerRef = useRef(null);
   const containerRef = useRef(null);
+
+  // Define separate image arrays for web and standalone projects
+  const webProjectImages = [projectimg1];
+  const standaloneProjectImages = [projectimg2, projectimg3];
 
   // Function to start/restart auto-switching timer
   const startAutoSwitchTimer = () => {
@@ -66,10 +73,10 @@ const RecentProjects = () => {
   // Define web projects
   const webProjects = [
     {
-      icon: "⚓",
-      iconBg: "yellow-500",
+      icon: <Globe className="h-6 w-6 text-cyan-400" />,
+      iconBg: "cyan-500",
       title: "ExportHaven",
-      titleGradient: "from-yellow-400 to-yellow-300",
+      titleGradient: "from-cyan-400 to-blue-500", // Updated to match screenshot
       description: "I Developed the ad management section and chat feature using RESTful APIs and Socket io.",
       status: "Online",
       statusColor: "green",
@@ -87,11 +94,11 @@ const RecentProjects = () => {
   // Define standalone projects
   const standaloneProjects = [
     {
-      icon: "E", 
-      iconType: "letter",
-      iconBg: "indigo-500",
+      icon: <Ticket className="h-6 w-6 text-blue-400" />,
+      iconType: "lucide",
+      iconBg: "blue-600",
       title: "Live Event Ticketing System",
-      titleGradient: "from-indigo-400 to-blue-400",
+      titleGradient: "from-cyan-400 to-blue-500", // Updated to match screenshot
       description: "Developed an event ticketing platform using multi-threading and Producer-Consumer pattern.",
       status: "Offline",
       statusColor: "gray",
@@ -105,11 +112,11 @@ const RecentProjects = () => {
       ]
     },
     {
-      icon: "E",
-      iconType: "letter",
-      iconBg: "indigo-500",
+      icon: <ShoppingCart className="h-6 w-6 text-blue-400" />,
+      iconType: "lucide",
+      iconBg: "blue-600",
       title: "Simple POS system",
-      titleGradient: "from-indigo-400 to-blue-400",
+      titleGradient: "from-cyan-400 to-blue-500", // Updated to match screenshot
       description: "Developed a basic POS system using MVC architecture and implementing full CRUD operations.",
       status: "Offline",
       statusColor: "gray",
@@ -122,10 +129,11 @@ const RecentProjects = () => {
       ]
     },
     {
-      icon: "⚓",
+      icon: <PlaneTakeoff className="h-6 w-6 text-cyan-400" />,
+      iconType: "lucide",
       iconBg: "cyan-500",
       title: "Airline Ticketing System",
-      titleGradient: "from-cyan-400 to-blue-400",
+      titleGradient: "from-cyan-400 to-blue-500", // Updated to match screenshot
       description: "Developed an airplane seat booking system using Java CLI.",
       status: "Offline",
       statusColor: "gray",
@@ -196,15 +204,13 @@ const RecentProjects = () => {
           </p>
         </div>
 
-        {/* Showcase Image */}
+        {/* Showcase Image - Show different images based on active tab */}
         <div className="flex justify-center mb-20 relative">
-          <div className="relative z-10 transform hover:rotate-1 transition-transform duration-500 max-w-lg">
-            <img 
-              src={image}
-              alt="Project Showcase"
-              className="relative z-10 rounded-3xl shadow-2xl hover:shadow-blue-500/20 transition-all duration-300"
-            />
-          </div>
+          <ImageSlider 
+            images={activeTab === 'web' ? webProjectImages : standaloneProjectImages} 
+            interval={4000} 
+            autoPlay={true} 
+          />
         </div>
 
         {/* Projects Grid */}
@@ -213,52 +219,49 @@ const RecentProjects = () => {
           {(activeTab === 'web' ? webProjects : standaloneProjects).map((project, index) => (
             <div 
               key={index}
-              className="bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 hover:border-blue-500 shadow-lg hover:shadow-blue-500/10 overflow-hidden transition-all duration-300 group"
+              className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-700 hover:border-blue-800 hover:shadow-blue-500/10"
             >
-              <div className="p-6">
-                <div className="flex justify-center mb-6">
-                  <div className={`w-16 h-16 rounded-full bg-${project.iconBg}/20 flex items-center justify-center group-hover:scale-110 transition-transform duration-300`}>
-                    {project.iconType === 'letter' ? (
-                      <div className={`w-10 h-10 rounded-full bg-indigo-900/50 flex items-center justify-center`}>
-                        <span className="text-white text-xl font-bold">{project.icon}</span>
-                      </div>
-                    ) : (
-                      <span className="text-3xl">{project.icon}</span>
-                    )}
-                  </div>
+              <div className="flex items-center mb-4">
+                <div className={`w-16 h-16 rounded-full bg-${project.iconBg}/20 flex items-center justify-center mr-4`}>
+                  {project.iconType === 'lucide' ? (
+                    project.icon
+                  ) : (
+                    project.icon
+                  )}
                 </div>
-                <h5 className={`text-xl font-bold text-center mb-3 text-transparent bg-clip-text bg-gradient-to-r ${project.titleGradient}`}>
+                <h5 className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${project.titleGradient}`}>
                   {project.title}
                 </h5>
-                <p className="text-gray-400 text-sm mb-6 text-center leading-relaxed">
-                  {project.description}
-                </p>
-                
-                <div className="flex justify-between items-center mb-4">
-                  <div className="flex items-center">
-                    <span className="text-xs font-medium text-gray-500 mr-2">Status:</span>
-                    <span className={`px-3 py-1 ${project.status === "Online" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"} rounded-full text-xs font-medium`}>
-                      {project.status}
-                    </span>
-                  </div>
-                  <div className="flex items-center">
-                    <span className="text-xs font-medium text-gray-500 mr-2">Category:</span>
-                    <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">
-                      {project.category}
-                    </span>
-                  </div>
+              </div>
+              
+              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+                {project.description}
+              </p>
+              
+              <div className="flex justify-between items-center mb-4">
+                <div className="flex items-center">
+                  <span className="text-xs font-medium text-gray-500 mr-2">Status:</span>
+                  <span className={`px-3 py-1 ${project.status === "Online" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"} rounded-full text-xs font-medium`}>
+                    {project.status}
+                  </span>
                 </div>
-                
-                <div className="flex flex-wrap gap-2">
-                  {project.technologies.map((tech, techIndex) => (
-                    <span 
-                      key={techIndex} 
-                      className={`px-3 py-1 bg-${tech.color}-500/20 text-${tech.color}-400 rounded-full text-xs font-medium`}
-                    >
-                      {tech.name}
-                    </span>
-                  ))}
+                <div className="flex items-center">
+                  <span className="text-xs font-medium text-gray-500 mr-2">Category:</span>
+                  <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">
+                    {project.category}
+                  </span>
                 </div>
+              </div>
+              
+              <div className="flex flex-wrap gap-2">
+                {project.technologies.map((tech, techIndex) => (
+                  <span 
+                    key={techIndex} 
+                    className={`px-3 py-1 bg-${tech.color}-500/20 text-${tech.color}-400 rounded-full text-xs font-medium`}
+                  >
+                    {tech.name}
+                  </span>
+                ))}
               </div>
             </div>
           ))}

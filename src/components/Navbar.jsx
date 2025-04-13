@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Menu, X, Home, User, Briefcase, Code, FileText, Heart, Download } from 'lucide-react';
+import resumePdf from "../images/Savindu_Rajapaksha.pdf"; // Import the PDF file
 
 const Navbar = ({ onPageChange, currentPage }) => {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,7 +82,7 @@ const Navbar = ({ onPageChange, currentPage }) => {
               
               {/* Resume Button */}
               <a 
-                href="/resume.pdf" 
+                href={resumePdf} 
                 download="Savindu_Rajapaksha_Resume.pdf"
                 className="ml-4 px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-400 bg-[length:200%_auto] font-medium text-white shadow-lg shadow-cyan-500/20 hover:-translate-y-1 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300"
               >
@@ -134,7 +135,7 @@ const Navbar = ({ onPageChange, currentPage }) => {
           {/* Mobile Resume Button */}
           <div className="px-3 py-2">
             <a 
-              href="/resume.pdf" 
+              href={resumePdf}
               download="Savindu_Rajapaksha_Resume.pdf"
               className="block w-full px-4 py-2 rounded-full bg-gradient-to-r from-blue-500 via-cyan-500 to-blue-400 bg-[length:200%_auto] font-medium text-white shadow-lg shadow-cyan-500/20 hover:shadow-xl hover:shadow-cyan-500/40 transition-all duration-300 text-center"
             >

@@ -1,7 +1,8 @@
 import React, { useState, useEffect } from 'react';
-import { Briefcase, Calendar, Code, Package, Award, ExternalLink, GraduationCap, School, Clock, Trophy, MapPin } from 'lucide-react';
+import { Briefcase, Calendar, Code, Package, Award, ExternalLink, GraduationCap, School, Clock, Trophy, MapPin, ChevronRight } from 'lucide-react';
 // Direct implementation without ComponentWrapper to avoid potential conflicts
 // import ComponentWrapper from '../components/ComponentWrapper';
+import ModernQuickNav from '../components/ModernQuickNav';  // Import the new navigation component
 
 function Experience() {
   // State to track if we're on mobile
@@ -46,100 +47,9 @@ function Experience() {
       )}
       
       <div className="flex flex-col lg:flex-row lg:space-x-6 pt-0 px-4 sm:px-6">
-        {/* Left sidebar - Skills Overview - NO STICKY POSITIONING */}
+        {/* Left sidebar - Modern Navigation Component */}
         <div className="w-full lg:w-64 flex-shrink-0 lg:mr-8 mb-8 lg:mb-0">
-          <div className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-5 border border-gray-700">
-            <div className="mb-4">
-              <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-3">
-                Quick Navigation
-              </h3>
-              <ul className="space-y-2">
-                <li>
-                  <a 
-                    href="#career" 
-                    onClick={(e) => handleNavClick(e, 'career')}
-                    className="flex items-center text-gray-300 hover:text-cyan-400 transition-colors"
-                  >
-                    <Briefcase className="h-4 w-4 mr-2" />
-                    <span>Career Experience</span>
-                  </a>
-                </li>
-                <li>
-                  <a 
-                    href="#academic" 
-                    onClick={(e) => handleNavClick(e, 'academic')}
-                    className="flex items-center text-gray-300 hover:text-blue-400 transition-colors"
-                  >
-                    <GraduationCap className="h-4 w-4 mr-2" />
-                    <span>Academic Qualifications</span>
-                  </a>
-                </li>
-              </ul>
-              <div className="h-px w-full bg-gray-700 my-4"></div>
-            </div>
-
-            <div>
-              <h3 className="text-lg sm:text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500 mb-4">
-                Skills Overview
-              </h3>
-              <div className="space-y-4">
-                {/* Java */}
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300 text-sm sm:text-base">Java</span>
-                    <span className="text-blue-400 font-medium text-sm sm:text-base">Expert</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '90%' }}></div>
-                  </div>
-                </div>
-                
-                {/* SpringBoot */}
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300 text-sm sm:text-base">SpringBoot</span>
-                    <span className="text-blue-400 font-medium text-sm sm:text-base">Advanced</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '75%' }}></div>
-                  </div>
-                </div>
-                
-                {/* JavaScript */}
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300 text-sm sm:text-base">Java Script</span>
-                    <span className="text-blue-400 font-medium text-sm sm:text-base">Intermediate</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-                
-                {/* Node.JS */}
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300 text-sm sm:text-base">Node.JS</span>
-                    <span className="text-blue-400 font-medium text-sm sm:text-base">Intermediate</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '65%' }}></div>
-                  </div>
-                </div>
-                
-                {/* React.JS */}
-                <div>
-                  <div className="flex justify-between mb-1">
-                    <span className="text-gray-300 text-sm sm:text-base">React.JS</span>
-                    <span className="text-blue-400 font-medium text-sm sm:text-base">Intermediate</span>
-                  </div>
-                  <div className="h-2 w-full bg-gray-700 rounded-full overflow-hidden">
-                    <div className="h-full bg-blue-500 rounded-full" style={{ width: '60%' }}></div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+          <ModernQuickNav />
         </div>
 
         {/* Main Content Area */}

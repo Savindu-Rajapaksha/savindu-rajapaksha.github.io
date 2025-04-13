@@ -30,9 +30,9 @@ const Footer = () => {
 
   return (
     <>
-      {/* Full width horizontal line with padding */}
+      {/* Full width horizontal line with padding - Fixed to be truly full width */}
       <div className="w-full pt-16">
-        <div className="h-px w-full bg-gradient-to-r from-blue-500/30 via-blue-500/80 to-blue-500/30"></div>
+        <div className="w-full h-px bg-gradient-to-r from-blue-500/30 via-blue-500/80 to-blue-500/30"></div>
       </div>
       
       <footer className="relative z-10 bg-gray-900/80 backdrop-blur-md">
