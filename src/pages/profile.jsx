@@ -5,9 +5,6 @@ import {
   Linkedin,
   Phone,
   Download,
-  Code,
-  Terminal,
-  Palette,
   ChevronDown
 } from "lucide-react";
 import profileImage from "../images/image.png";
@@ -21,6 +18,34 @@ const Star = () => (
     className="w-6 h-6 text-cyan-500" // Changed from text-cyan-400 to text-cyan-500 for more consistent blue
   >
     <polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2" />
+  </svg>
+);
+
+// Custom Frontend Icon (Code brackets)
+const FrontendIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <polyline points="16 18 22 12 16 6"></polyline>
+    <polyline points="8 6 2 12 8 18"></polyline>
+  </svg>
+);
+
+// Custom Backend Icon (Terminal-like)
+const BackendIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <polyline points="4 17 10 11 4 5"></polyline>
+    <line x1="12" y1="19" x2="20" y2="19"></line>
+  </svg>
+);
+
+// Custom FullStack Icon (Circle with dots/connections)
+const FullStackIcon = () => (
+  <svg viewBox="0 0 24 24" width="20" height="20" stroke="currentColor" strokeWidth="2" fill="none" strokeLinecap="round" strokeLinejoin="round" className="w-5 h-5">
+    <circle cx="12" cy="12" r="10"></circle>
+    <circle cx="12" cy="8" r="1" fill="currentColor"></circle>
+    <circle cx="8" cy="14" r="1" fill="currentColor"></circle>
+    <circle cx="16" cy="14" r="1" fill="currentColor"></circle>
+    <line x1="12" y1="9" x2="8" y2="13"></line>
+    <line x1="12" y1="9" x2="16" y2="13"></line>
   </svg>
 );
 
@@ -48,9 +73,9 @@ const Headerfile = () => {
   }, []);
 
   const skills = [
-    { icon: <Code className="w-5 h-5" />, text: "Front-End", delay: 100 },
-    { icon: <Terminal className="w-5 h-5" />, text: "Back-end", delay: 200 },
-    { icon: <Palette className="w-5 h-5" />, text: "Full Stack", delay: 300 },
+    { icon: <FrontendIcon />, text: "Front-End", delay: 100 },
+    { icon: <BackendIcon />, text: "Back-end", delay: 200 },
+    { icon: <FullStackIcon />, text: "Full Stack", delay: 300 },
   ];
 
   const socialLinks = [
