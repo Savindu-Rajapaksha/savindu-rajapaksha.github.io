@@ -35,7 +35,8 @@ function Experience() {
 
   return (
     // Direct implementation of wrapper to avoid potential conflicts with ComponentWrapper
-    <div className="relative w-full bg-transparent text-white">
+    // Add margin-left in larger screen sizes using the lg: breakpoint
+    <div className="relative w-full bg-transparent text-white lg:ml-12 xl:ml-18">
       {/* Mobile-only Experience heading */}
       {isMobile && (
         <div className="mb-10 text-center">
