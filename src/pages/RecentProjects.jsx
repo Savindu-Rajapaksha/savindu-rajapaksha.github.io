@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Monitor, Smartphone, Globe, Briefcase, Ticket, ShoppingCart, PlaneTakeoff } from 'lucide-react';
+import { Monitor, Smartphone, Globe, Briefcase, Ticket, ShoppingCart, PlaneTakeoff, Github, ExternalLink } from 'lucide-react';
 import ComponentWrapper from '../components/ComponentWrapper';
 import ImageSlider from '../components/ImageSlider'; // Import the new component
 import projectimg1 from '../images/projectimg1.png'; // Web project image
@@ -10,10 +10,46 @@ const RecentProjects = () => {
   const [activeTab, setActiveTab] = useState('web'); // 'web' or 'standalone'
   const autoSwitchTimerRef = useRef(null);
   const containerRef = useRef(null);
+  const [tabHeight, setTabHeight] = useState(0);
+  const [isTransitioning, setIsTransitioning] = useState(false);
+  const webContentRef = useRef(null);
+  const standaloneContentRef = useRef(null);
 
   // Define separate image arrays for web and standalone projects
   const webProjectImages = [projectimg1];
   const standaloneProjectImages = [projectimg2, projectimg3];
+
+  // Function to update tab content height
+  const updateTabHeight = () => {
+    if (activeTab === 'web' && webContentRef.current) {
+      setTabHeight(webContentRef.current.scrollHeight);
+    } else if (activeTab === 'standalone' && standaloneContentRef.current) {
+      setTabHeight(standaloneContentRef.current.scrollHeight);
+    }
+  };
+
+  // Update height on window resize
+  useEffect(() => {
+    const handleResize = () => {
+      updateTabHeight();
+    };
+
+    window.addEventListener('resize', handleResize);
+    return () => {
+      window.removeEventListener('resize', handleResize);
+    };
+  }, [activeTab]);
+
+  // Update height when tab changes or content loads
+  useEffect(() => {
+    // Short delay to ensure content has rendered
+    const timer = setTimeout(() => {
+      updateTabHeight();
+      setIsTransitioning(false);
+    }, 50);
+    
+    return () => clearTimeout(timer);
+  }, [activeTab]);
 
   // Function to start/restart auto-switching timer
   const startAutoSwitchTimer = () => {
@@ -24,14 +60,25 @@ const RecentProjects = () => {
     
     // Set up a new interval
     autoSwitchTimerRef.current = setInterval(() => {
-      setActiveTab(currentTab => currentTab === 'web' ? 'standalone' : 'web');
+      // First set transitioning state to apply smooth height animation
+      setIsTransitioning(true);
+      
+      // Small delay before changing tab to let transition start
+      setTimeout(() => {
+        setActiveTab(currentTab => currentTab === 'web' ? 'standalone' : 'web');
+      }, 50);
     }, 6000); // Change tab every 6 seconds
   };
   
   // Handle manual tab change
   const handleTabChange = (tabId) => {
-    setActiveTab(tabId);
-    startAutoSwitchTimer(); // Reset the timer when a tab is manually clicked
+    if (tabId === activeTab) return; // Skip if already on this tab
+    
+    setIsTransitioning(true);
+    setTimeout(() => {
+      setActiveTab(tabId);
+      startAutoSwitchTimer(); // Reset the timer when a tab is manually clicked
+    }, 50);
   };
 
   // Auto-switching tabs effect with intersection observer
@@ -43,6 +90,8 @@ const RecentProjects = () => {
         
         // If component is visible, start auto-switching
         if (entry.isIntersecting) {
+          // Initial height calculation when first visible
+          updateTabHeight();
           startAutoSwitchTimer();
         } else {
           // If component is not visible, clear the timer
@@ -82,12 +131,13 @@ const RecentProjects = () => {
       statusColor: "green",
       category: "Web",
       technologies: [
-        { name: "React.JS", color: "red" },
-        { name: "Node.JS", color: "orange" },
+        { name: "React.JS", color: "blue" },
+        { name: "Node.JS", color: "green" },
         { name: "MongoDB", color: "purple" },
-        { name: "Postman", color: "green" },
-        { name: "GitHub", color: "blue" }
-      ]
+        { name: "Postman", color: "orange" },
+        { name: "GitHub", color: "gray" }
+      ],
+      github: "https://github.com/nimdiyar/SDGP_SE_63_Exporthaven"
     }
   ];
 
@@ -109,7 +159,8 @@ const RecentProjects = () => {
         { name: "React.JS", color: "blue" },
         { name: "MySQL", color: "orange" },
         { name: "Postman", color: "purple" }
-      ]
+      ],
+      github: "https://github.com/Savindu-Rajapaksha/live-event-ticketing-system-backend"
     },
     {
       icon: <ShoppingCart className="h-6 w-6 text-blue-400" />,
@@ -122,11 +173,12 @@ const RecentProjects = () => {
       statusColor: "gray",
       category: "Standalone",
       technologies: [
-        { name: "SpringBoot", color: "red" },
-        { name: "MySQL", color: "green" },
-        { name: "Postman", color: "blue" },
-        { name: "Swagger", color: "orange" }
-      ]
+        { name: "SpringBoot", color: "green" },
+        { name: "MySQL", color: "blue" },
+        { name: "Postman", color: "orange" },
+        { name: "Swagger", color: "gray" }
+      ],
+      github: "https://github.com/SavinduHansaka/POS-System"
     },
     {
       icon: <PlaneTakeoff className="h-6 w-6 text-cyan-400" />,
@@ -140,9 +192,94 @@ const RecentProjects = () => {
       category: "Standalone",
       technologies: [
         { name: "Java", color: "red" }
-      ]
+      ],
+      github: "https://github.com/Savindu-Rajapaksha/ticketing-system-CLI/tree/master"
     }
   ];
+
+  // Create a component to render projects
+  const ProjectGrid = ({ projects }) => (
+    <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      {projects.map((project, index) => (
+        <div 
+          key={index}
+          className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-700 hover:border-blue-800 hover:shadow-blue-500/10"
+        >
+          <div className="flex items-center mb-4">
+            <div className="w-16 h-16 rounded-full bg-blue-500/20 flex items-center justify-center mr-4">
+              {project.icon}
+            </div>
+            <div>
+              <h5 className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${project.titleGradient} mb-1`}>
+                {project.title}
+              </h5>
+              {project.github && (
+                <a 
+                  href={project.github} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="flex items-center text-xs text-gray-400 hover:text-blue-400 transition-colors duration-300"
+                >
+                  <Github className="h-3 w-3 mr-1" />
+                  View on GitHub
+                  <ExternalLink className="h-3 w-3 ml-1" />
+                </a>
+              )}
+            </div>
+          </div>
+          
+          <p className="text-gray-400 text-sm mb-6 leading-relaxed">
+            {project.description}
+          </p>
+          
+          <div className="flex justify-between items-center mb-4">
+            <div className="flex items-center">
+              <span className="text-xs font-medium text-gray-500 mr-2">Status:</span>
+              <span className={`px-3 py-1 ${project.status === "Online" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"} rounded-full text-xs font-medium`}>
+                {project.status}
+              </span>
+            </div>
+            <div className="flex items-center">
+              <span className="text-xs font-medium text-gray-500 mr-2">Category:</span>
+              <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">
+                {project.category}
+              </span>
+            </div>
+          </div>
+          
+          <div className="flex flex-wrap gap-2 mb-4">
+            {project.technologies.map((tech, techIndex) => (
+              <span 
+                key={techIndex} 
+                className="px-3 py-1 bg-gray-700 text-gray-300 rounded-full text-xs font-medium"
+                style={{
+                  backgroundColor: `rgba(var(--${tech.color}-rgb), 0.2)`,
+                  color: `rgb(var(--${tech.color}-rgb))`
+                }}
+              >
+                {tech.name}
+              </span>
+            ))}
+          </div>
+          
+          {project.github && (
+            <div className="mt-4 pt-4 border-t border-gray-700">
+              <a 
+                href={project.github} 
+                target="_blank" 
+                rel="noopener noreferrer" 
+                className="inline-flex items-center justify-center w-full py-2 px-3 rounded-lg bg-gray-700 hover:bg-blue-600 text-white text-sm font-medium transition-colors duration-300"
+              >
+                <Github className="h-4 w-4 mr-2" />
+                View Source Code
+                <ExternalLink className="h-4 w-4 ml-2" />
+              </a>
+            </div>
+          )}
+        </div>
+      ))}
+    </div>
+  );
 
   return (
     <ComponentWrapper>
@@ -193,79 +330,87 @@ const RecentProjects = () => {
           </div>
         </div>
 
-        {/* Description Text */}
-        <div className="mb-14">
-          <p className="text-center text-gray-400 max-w-2xl mx-auto">
-            {activeTab === 'web' ? (
-              <>In below section contains web sites, web services that are developed using various technologies. Such as <span className="text-blue-400">React</span>, <span className="text-green-400">Node.js</span></>
-            ) : (
-              <>Standalone Solutions that developed with <span className="text-orange-400">Java</span>, <span className="text-blue-400">SpringBoot</span> & <span className="text-red-400">React</span> can found in below section</>
-            )}
-          </p>
-        </div>
-
-        {/* Showcase Image - Show different images based on active tab */}
-        <div className="flex justify-center mb-20 relative">
-          <ImageSlider 
-            images={activeTab === 'web' ? webProjectImages : standaloneProjectImages} 
-            interval={4000} 
-            autoPlay={true} 
-          />
-        </div>
-
-        {/* Projects Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {/* Show projects based on active tab */}
-          {(activeTab === 'web' ? webProjects : standaloneProjects).map((project, index) => (
-            <div 
-              key={index}
-              className="bg-gray-800/80 backdrop-blur-sm rounded-xl sm:rounded-2xl shadow-xl p-4 sm:p-6 hover:shadow-2xl transition-all duration-300 transform hover:-translate-y-1 border border-gray-700 hover:border-blue-800 hover:shadow-blue-500/10"
-            >
-              <div className="flex items-center mb-4">
-                <div className={`w-16 h-16 rounded-full bg-${project.iconBg}/20 flex items-center justify-center mr-4`}>
-                  {project.iconType === 'lucide' ? (
-                    project.icon
-                  ) : (
-                    project.icon
-                  )}
-                </div>
-                <h5 className={`text-xl font-bold text-transparent bg-clip-text bg-gradient-to-r ${project.titleGradient}`}>
-                  {project.title}
-                </h5>
-              </div>
-              
-              <p className="text-gray-400 text-sm mb-6 leading-relaxed">
-                {project.description}
+        {/* Container for all tab content with smooth height transition */}
+        <div 
+          className="relative overflow-hidden transition-all duration-500 ease-in-out"
+          style={{ height: tabHeight ? `${tabHeight}px` : 'auto' }}
+        >
+          {/* Web Projects Content */}
+          <div 
+            ref={webContentRef}
+            className={`absolute top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+              activeTab === 'web' 
+                ? 'opacity-100 translate-x-0 visible' 
+                : 'opacity-0 -translate-x-6 invisible'
+            }`}
+            style={{ visibility: activeTab === 'web' || isTransitioning ? 'visible' : 'hidden' }}
+          >
+            {/* Description Text */}
+            <div className="mb-14">
+              <p className="text-center text-gray-400 max-w-2xl mx-auto">
+                In below section contains web sites, web services that are developed using various technologies. Such as <span className="text-blue-400">React</span>, <span className="text-green-400">Node.js</span>
               </p>
-              
-              <div className="flex justify-between items-center mb-4">
-                <div className="flex items-center">
-                  <span className="text-xs font-medium text-gray-500 mr-2">Status:</span>
-                  <span className={`px-3 py-1 ${project.status === "Online" ? "bg-green-500/20 text-green-400" : "bg-gray-500/20 text-gray-400"} rounded-full text-xs font-medium`}>
-                    {project.status}
-                  </span>
-                </div>
-                <div className="flex items-center">
-                  <span className="text-xs font-medium text-gray-500 mr-2">Category:</span>
-                  <span className="px-3 py-1 bg-blue-500/20 text-blue-400 rounded-full text-xs font-medium">
-                    {project.category}
-                  </span>
-                </div>
-              </div>
-              
-              <div className="flex flex-wrap gap-2">
-                {project.technologies.map((tech, techIndex) => (
-                  <span 
-                    key={techIndex} 
-                    className={`px-3 py-1 bg-${tech.color}-500/20 text-${tech.color}-400 rounded-full text-xs font-medium`}
-                  >
-                    {tech.name}
-                  </span>
-                ))}
+            </div>
+
+            {/* Showcase Image */}
+            <div className="flex justify-center mb-20 relative">
+              <div className="w-full max-w-lg mx-auto">
+                <ImageSlider 
+                  images={webProjectImages} 
+                  interval={4000} 
+                  autoPlay={true} 
+                />
               </div>
             </div>
-          ))}
+
+            {/* Web Projects Grid */}
+            <ProjectGrid projects={webProjects} />
+          </div>
+
+          {/* Standalone Projects Content */}
+          <div 
+            ref={standaloneContentRef}
+            className={`absolute top-0 left-0 w-full transition-all duration-500 ease-in-out ${
+              activeTab === 'standalone' 
+                ? 'opacity-100 translate-x-0 visible' 
+                : 'opacity-0 translate-x-6 invisible'
+            }`}
+            style={{ visibility: activeTab === 'standalone' || isTransitioning ? 'visible' : 'hidden' }}
+          >
+            {/* Description Text */}
+            <div className="mb-14">
+              <p className="text-center text-gray-400 max-w-2xl mx-auto">
+                Standalone Solutions that developed with <span className="text-orange-400">Java</span>, <span className="text-blue-400">SpringBoot</span> & <span className="text-red-400">React</span> can found in below section
+              </p>
+            </div>
+
+            {/* Showcase Image */}
+            <div className="flex justify-center mb-20 relative">
+              <div className="w-full max-w-lg mx-auto">
+                <ImageSlider 
+                  images={standaloneProjectImages} 
+                  interval={4000} 
+                  autoPlay={true} 
+                />
+              </div>
+            </div>
+
+            {/* Standalone Projects Grid */}
+            <ProjectGrid projects={standaloneProjects} />
+          </div>
         </div>
+
+        {/* Custom CSS variables for technology pill colors */}
+        <style jsx>{`
+          :root {
+            --blue-rgb: 59, 130, 246;
+            --green-rgb: 34, 197, 94;
+            --red-rgb: 239, 68, 68;
+            --purple-rgb: 168, 85, 247;
+            --orange-rgb: 249, 115, 22;
+            --gray-rgb: 107, 114, 128;
+          }
+        `}</style>
       </div>
     </ComponentWrapper>
   );
