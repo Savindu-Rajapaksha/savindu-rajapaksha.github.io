@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Heart, Award, Bot, Brain, MapPin, Gamepad2 } from 'lucide-react';
+import { Heart, Award, Bot, MapPin, Gamepad2 } from 'lucide-react';
 import ComponentWrapper from '../components/ComponentWrapper';
 
 const OtherThanTechnology = () => {
@@ -196,39 +196,51 @@ const OtherThanTechnology = () => {
               </div>
             </div>
             
-            {/* Soft Science Interest */}
+            {/* Crypto Interest - Replace Soft Science */}
             <div className="group">
               <div className="bg-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-gray-700 hover:border-blue-500 transition-all duration-300 shadow-lg h-full hover:-translate-y-2 transform-gpu hover:-rotate-1">
                 <div className="flex items-center mb-4">
                   <div className="w-12 h-12 rounded-xl bg-blue-500/20 flex items-center justify-center mr-4 group-hover:rotate-12 transition-transform duration-300">
-                    <Brain className="h-6 w-6 text-blue-400" />
+                    {/* Replace Brain icon with Bitcoin icon */}
+                    <svg 
+                      xmlns="http://www.w3.org/2000/svg" 
+                      className="h-6 w-6 text-blue-400"
+                      fill="none"
+                      viewBox="0 0 24 24" 
+                      stroke="currentColor"
+                    >
+                      <path 
+                        strokeLinecap="round" 
+                        strokeLinejoin="round" 
+                        strokeWidth={2} 
+                        d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3v3m0-3c-3.87 0-7 3.13-7 7m7-7c3.87 0 7 3.13 7 7m-7 7v-3m-3-4h6m-6 0c-.55 0-1 .45-1 1s.45 1 1 1m6-2c.55 0 1 .45 1 1s-.45 1-1 1" 
+                      />
+                    </svg>
                   </div>
                   <div>
-                    <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">Soft Science</h4>
+                    <h4 className="text-lg font-bold text-white group-hover:text-blue-400 transition-colors duration-300">Cryptocurrency</h4>
                   </div>
                 </div>
                 <p className="text-gray-400 ml-16 group-hover:text-gray-300 transition-colors duration-300">
-                  Psychology
+                  Trading & Blockchain Technology
                 </p>
               </div>
             </div>
             
-            {/* Traveling & Gaming Interest */}
+            {/* Traveling & Gaming Interest - Fix the spacing */}
             <div className="group">
               <div className="bg-gray-800/40 backdrop-blur-md rounded-2xl p-6 border border-gray-700 hover:border-green-500 transition-all duration-300 shadow-lg h-full hover:-translate-y-2 transform-gpu hover:rotate-1">
-                <div className="flex items-start mb-4">
-                  <div className="flex flex-col items-center space-y-2 mr-4">
-                    <div className="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center group-hover:-rotate-12 transition-transform duration-300">
-                      <Gamepad2 className="h-6 w-6 text-yellow-400" />
-                    </div>
+                <div className="flex items-center mb-4">
+                  <div className="w-12 h-12 rounded-xl bg-yellow-500/20 flex items-center justify-center mr-4 group-hover:-rotate-12 transition-transform duration-300">
+                    <Gamepad2 className="h-6 w-6 text-yellow-400" />
                   </div>
                   <div>
                     <h4 className="text-lg font-bold text-white group-hover:text-green-400 transition-colors duration-300">Travelling & Gaming</h4>
-                    <p className="text-gray-400 group-hover:text-gray-300 transition-colors duration-300">
-                      Travelling, Hiking & Computer Gaming
-                    </p>
                   </div>
                 </div>
+                <p className="text-gray-400 ml-16 group-hover:text-gray-300 transition-colors duration-300">
+                  Travelling, Hiking & Computer Gaming
+                </p>
               </div>
             </div>
           </div>

@@ -12,7 +12,6 @@ import {
   Terminal,
   Layers,
 } from "lucide-react";
-import ComponentWrapper from '../components/ComponentWrapper';
 
 const TechnicalSkills = () => {
   const [activeTab, setActiveTab] = useState('technologies'); // Default active tab
@@ -240,7 +239,7 @@ const TechnicalSkills = () => {
 
         {/* Databases content */}
         <div className={`transition-all transform ${getTabAnimationClass('databases')}`}>
-          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-8 w-full max-w-4xl mx-auto">
+          <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-2 xl:grid-cols-2 2xl:grid-cols-4 gap-8 w-full justify-start">
             {databases.map((db, index) => renderTechCard(db, index))}
           </div>
         </div>
@@ -256,9 +255,9 @@ const TechnicalSkills = () => {
   };
 
   return (
-    <ComponentWrapper>
+    <div className="relative w-full bg-transparent text-white px-4 sm:px-6 lg:px-16 xl:px-24">
       {/* Added reference to the container */}
-      <div ref={containerRef} className="w-full mt-0">
+      <div ref={containerRef} className="w-full max-w-7xl mx-auto mt-0">
         {/* Technical Skills Header */}
         <div className="mb-8 text-center">
           <h2 className="text-3xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-blue-500">
@@ -318,11 +317,11 @@ const TechnicalSkills = () => {
         </div>
 
         {/* Dynamic Content Based on Active Tab */}
-        <div className="w-full px-0 md:px-4 lg:px-8 xl:px-16">
+        <div className="w-full">
           {renderTabContent()}
         </div>
       </div>
-    </ComponentWrapper>
+    </div>
   );
 };
 
