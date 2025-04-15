@@ -117,7 +117,7 @@ const Footer = () => {
               <ul className="space-y-3">
                 <li className="flex items-start">
                   <Mail className="w-5 h-5 text-blue-400 mr-3 mt-0.5" />
-                  <span className="text-gray-400">savinduhansaka362@gmail.com</span>
+                  <span className="text-gray-400">savindu.h.rajapaksha@gmail.com</span>
                 </li>
                 <li className="flex items-start">
                   <Phone className="w-5 h-5 text-blue-400 mr-3 mt-0.5" />
@@ -142,8 +142,7 @@ const Footer = () => {
                 <Code className="w-4 h-4 mr-1" />
                 Crafted with
               </span>
-              <Heart className="w-4 h-4 mx-1 text-blue-500 animate-pulse" />
-              <span>and React.js</span>
+              <span>React.js</span>
             </div>
           </div>
         </div>
