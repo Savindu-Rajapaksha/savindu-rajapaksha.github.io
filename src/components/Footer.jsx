@@ -140,9 +140,8 @@ const Footer = () => {
             <div className="flex items-center text-gray-400 text-sm">
               <span className="flex items-center">
                 <Code className="w-4 h-4 mr-1" />
-                Crafted with
+                Crafted with React.js
               </span>
-              <span>React.js</span>
             </div>
           </div>
         </div>
