@@ -12,11 +12,11 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git"
+    "url": "git+https://github.com/savindu-rajapaksha/savindu-rajapaksha.github.io.git"
   },
-  "author": "Pranay Gupta",
+  "author": "Savindu Rajapaksha",
   "bugs": {
-    "url": "https://github.com/thepranaygupta/react-tailwind-css-starter-pack/issues"
+    "url": "https://github.com/savindu-rajapaksha/savindu-rajapaksha.github.io/issues"
   },
   "scripts": {
     "predeploy": "npm run build",
