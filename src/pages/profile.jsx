@@ -60,7 +60,7 @@ const Headerfile = () => {
     identifiers: [
       "Savindu Rajapaksha",
       "a Software Engineer",
-      "a Undergraduate, University of Westminster",
+      "a Westminster Student",
       "a Full Stack Developer"
     ],
     currentIndex: 0,
@@ -225,7 +225,7 @@ const Headerfile = () => {
                 <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
                   {typewriterText}
                 </span>
-                <span id="cursor" className="inline-block w-0.5 h-8 sm:h-10 md:h-12 lg:h-14 bg-white ml-1"></span>
+                <span id="cursor" className="inline-block w-0.5 h-6 sm:h-8 md:h-9 lg:h-11 bg-white ml-1"></span>
               </h1>
               <style jsx>{`
                 @keyframes blink {
@@ -236,8 +236,8 @@ const Headerfile = () => {
                   animation: blink 1s step-end infinite;
                 }
               `}</style>
-              <div className="h-8 mt-2">
-                {/* This div provides space below the typewriter */}
+              <div className="h-2">
+                {/* Reduced spacing below the typewriter */}
               </div>
             </div>
 
