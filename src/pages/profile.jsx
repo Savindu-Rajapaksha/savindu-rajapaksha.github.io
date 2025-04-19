@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import {
   Github,
   Mail,
@@ -53,7 +53,23 @@ const Headerfile = () => {
   const [isVisible, setIsVisible] = useState(false);
   const [hoveredSocial, setHoveredSocial] = useState("");
   const [isMobile, setIsMobile] = useState(false);
-
+  const [typewriterText, setTypewriterText] = useState("Savindu Rajapaksha");
+  
+  // Use ref to store all typewriter variables
+  const typewriterRef = useRef({
+    identifiers: [
+      "Savindu Rajapaksha",
+      "a Software Engineer",
+      "a Undergraduate, University of Westminster",
+      "a Full Stack Developer"
+    ],
+    currentIndex: 0,
+    charIndex: "Savindu Rajapaksha".length,
+    isDeleting: true, // Start by deleting the first text
+    timeoutId: null
+  });
+  
+  // Effect for visibility and mobile check
   useEffect(() => {
     setIsVisible(true);
     
@@ -71,12 +87,88 @@ const Headerfile = () => {
     // Clean up
     return () => window.removeEventListener('resize', checkIsMobile);
   }, []);
-
-  const skills = [
-    { icon: <FrontendIcon />, text: "Front-End", delay: 100 },
-    { icon: <BackendIcon />, text: "Back-end", delay: 200 },
-    { icon: <FullStackIcon />, text: "Full Stack", delay: 300 },
-  ];
+  
+  // Typewriter effect implementation with improved reliability
+  useEffect(() => {
+    if (isVisible) {
+      let isBlinking = false;  // Track if cursor should blink
+      const cursorElement = document.getElementById('cursor');
+      
+      // Function to control cursor blinking
+      const updateCursor = (shouldBlink) => {
+        if (cursorElement) {
+          if (shouldBlink) {
+            cursorElement.classList.add('animate-blink');
+          } else {
+            cursorElement.classList.remove('animate-blink');
+          }
+        }
+      };
+      
+      // Create the typewriter animation function
+      const runTypewriter = () => {
+        const tw = typewriterRef.current;
+        const currentText = tw.identifiers[tw.currentIndex];
+        
+        // Stop cursor blinking during typing/deleting
+        if (isBlinking) {
+          isBlinking = false;
+          updateCursor(false);
+        }
+        
+        // Handle deleting state
+        if (tw.isDeleting) {
+          tw.charIndex--;
+          setTypewriterText(currentText.substring(0, tw.charIndex));
+          
+          // When done deleting
+          if (tw.charIndex === 0) {
+            tw.isDeleting = false;
+            tw.currentIndex = (tw.currentIndex + 1) % tw.identifiers.length;
+            
+            // Enable blinking between phrases
+            isBlinking = true;
+            updateCursor(true);
+            
+            tw.timeoutId = setTimeout(runTypewriter, 500);
+            return;
+          }
+        } 
+        // Handle typing state
+        else {
+          tw.charIndex++;
+          setTypewriterText(currentText.substring(0, tw.charIndex));
+          
+          // When done typing
+          if (tw.charIndex === currentText.length) {
+            tw.isDeleting = true;
+            
+            // Enable blinking during pause
+            isBlinking = true;
+            updateCursor(true);
+            
+            tw.timeoutId = setTimeout(runTypewriter, 1500);
+            return;
+          }
+        }
+        
+        // Continue animation with appropriate speed
+        const speed = tw.isDeleting ? 50 : 100;
+        tw.timeoutId = setTimeout(runTypewriter, speed);
+      };
+      
+      // Start the animation loop after a short delay
+      // Start with cursor blinking
+      isBlinking = true;
+      updateCursor(true);
+      typewriterRef.current.timeoutId = setTimeout(runTypewriter, 1500);
+      
+      // Cleanup
+      return () => {
+        clearTimeout(typewriterRef.current.timeoutId);
+      };
+    }
+  }, [isVisible]);
 
   const socialLinks = [
     {
@@ -124,34 +216,32 @@ const Headerfile = () => {
                 </div>
               </div>
               <h2 className="text-lg sm:text-xl font-semibold tracking-wider text-white text-opacity-90">
-                WELCOME TO MY WORLD
+                WELCOME TO MY PORTFOLIO
               </h2>
               <h1 className="mt-3 sm:mt-4 text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold text-white">
-                Hello, I'm{" "}
-                <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
-                  Savindu Rajapaksha
-                </span>
+                Hello, I'm
               </h1>
+              <h1 className="text-2xl sm:text-3xl md:text-4xl lg:text-5xl font-bold relative">
+                <span className="bg-gradient-to-r from-cyan-500 to-blue-500 bg-clip-text text-transparent">
+                  {typewriterText}
+                </span>
+                <span id="cursor" className="inline-block w-0.5 h-8 sm:h-10 md:h-12 lg:h-14 bg-white ml-1"></span>
+              </h1>
+              <style jsx>{`
+                @keyframes blink {
+                  0%, 100% { opacity: 1; }
+                  50% { opacity: 0; }
+                }
+                .animate-blink {
+                  animation: blink 1s step-end infinite;
+                }
+              `}</style>
+              <div className="h-8 mt-2">
+                {/* This div provides space below the typewriter */}
+              </div>
             </div>
 
-            <div className="flex flex-wrap gap-2 sm:gap-3 md:gap-4">
-              {skills.map((skill, index) => (
-                <div
-                  key={index}
-                  style={{ transitionDelay: `${skill.delay}ms` }}
-                  className={`flex items-center gap-1 sm:gap-2 px-3 sm:px-6 py-1.5 sm:py-3 rounded-full bg-gray-800/80 border border-gray-700 transition-all duration-500 ease-in-out hover:scale-110 hover:border-cyan-900 hover:shadow-lg hover:shadow-cyan-500/20 ${
-                    isVisible
-                      ? "transform-none opacity-100"
-                      : "-translate-x-full opacity-0"
-                  }`}
-                >
-                  {skill.icon}
-                  <span className="font-medium text-xs sm:text-sm md:text-base text-white">
-                    {skill.text}
-                  </span>
-                </div>
-              ))}
-            </div>
+            {/* Skills section removed as requested */}
 
             <p className="max-w-2xl text-sm sm:text-base md:text-lg text-white leading-relaxed p-4 sm:p-6 bg-gray-800/80 backdrop-blur-sm rounded-2xl border border-gray-700 shadow-lg shadow-black/10">
               Architecting digital masterpieces that solve complex problems with elegant simplicity. Where vision meets execution, possibilities become reality.
